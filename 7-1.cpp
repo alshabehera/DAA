@@ -1,60 +1,24 @@
 #include<iostream>
 using namespace std;
-
-void merge(int arr[], int aux[], int l, int m, int h)
+int floorsqrt(int x)
 {
-    int k = l;
 
-    for (int i = l; i <= m; i++)
-        if (arr[i] < 0)
-            aux[k++] = arr[i];
-
-    for (int j = m + 1; j <= h; j++)
-        if (arr[j] < 0)
-            aux[k++] = arr[j];
-
-    for (int i = l; i <= m; i++)
-        if (arr[i] >= 0)
-            aux[k++] = arr[i];
-
-    for (int j = m + 1; j <= h; j++)
-        if (arr[j] >= 0)
-            aux[k++] = arr[j];
-
-    for (int i = l; i <= h; i++)
-        arr[i] = aux[i];
+    if (x==0||x==1)
+        return x;
+        int i=1,result=1;
+        while(result<=x)
+    {
+        i++;
+        result=i*i;
+    }
+    return i-1;
 }
-
-void partition(int arr[], int aux[], int low, int high)
-{
-    if (high <= low)
-        return;
-
-    int mid = (low + ((high - low) >> 1));
-
-    partition(arr, aux, low, mid);
-    partition(arr, aux, mid + 1, high);
-
-    merge(arr, aux, low, mid, high);
-}
-
 int main()
 {
-    int arr[] = {14,20,-22,-1,4,6,-5};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    int aux[n];
-    for (int i = 0; i < n; i++)
-    {
-        aux[i] = arr[i];
-    }
-
-    partition(arr, aux, 0, n - 1);
-
-    for (int i = 0; i < n; i++)
-        printf("%d ", arr[i]);
-
+    int x;
+    cout<<"root square of 16 is "<<floorsqrt(16)<<endl;
+    cout<<"root square of 4 is "<<floorsqrt(4)<<endl;
+    cout<<"root square of 6 is "<<floorsqrt(6)<<endl;
     return 0;
+
 }
-
-
