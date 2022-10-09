@@ -16,7 +16,7 @@ public:
 int main()
 {
    xyz p;
-    int x = -3;
+    int x = -2;
     unsigned int y = 6;
 
     cout << p.power(x, y);
