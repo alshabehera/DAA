@@ -4,7 +4,7 @@ using namespace std;
 struct node{
     int data;
     struct node *next;
-}*first;
+}*first=NULL;
 
 void create(int *A,int n){
     first=new node;
@@ -12,6 +12,7 @@ void create(int *A,int n){
     first->data=A[0];
     first->next=NULL;
     last=first;
+    
     int i;
     for(i=1;i<n;i++){
         t=new node;
@@ -21,15 +22,7 @@ void create(int *A,int n){
         last=t;
     }
 }
-void count(struct node *first){
-     int c=0;
-    while(first!=0){
-        
-        c++;
-        first=first->next;
-    }
-    cout<<c;
-}
+
 int sum(struct node *first){
     int sum=0;
     while(first!=0){
@@ -62,8 +55,35 @@ void insert(struct node *p,int index,int x){
                 
             }
         }
-    
 
+
+void sortInsert(struct node *p,int key){
+    struct node *t ;
+    struct node *q=NULL ;
+    t=new node;
+    t->data=key;
+    t->next=NULL;
+    
+    if(first==NULL){
+        first=t;
+    }
+    else{ 
+        while(p!=0 && key>p->data){
+        q=p;
+        p=p->next;
+
+    }
+    if(p==first){
+        t->next=first;
+        first=t;
+
+    }
+    else{t->next=q->next;
+
+q->next=t;}
+
+}
+}
 void display(){
     
     while(first!=0){
@@ -71,16 +91,84 @@ void display(){
        
         first=first->next;
     }
-   
+     
+}
+
+int Delete(struct node *p,int index){
+   struct node *q;
+   q=NULL;
+   int x=-1;
+   if(index<0){
+    return -1;
+   }
+   if(index==1){
+    p=first;
+    first=first->next;
+    x=p->data;
+    delete p;
+    return x;
+   }
+   else{
+    for(int i=0;i<index-1;i++){
+        q=p;
+        p=p->next;
+    }
+    q->next=p->next;
+    x=p->data;
+    delete p;
+    return x;
+
+   }
+}
+
+void reverseNode(){
+    struct node *q=NULL;
+    int *A;
+    int i=0;
+    A=new int[7];
+    q=first;
+    while(q!=NULL){
+        A[i]=q->data;
+        q=q->next;
+        i++;
+    }
+    q=first;
+    i--;
+    while(q!=NULL){
+        q->data=A[i];
+        q=q->next;
+        i--;
+    }
+
+
+}
+void reverseLink(struct node *p){
+struct node *q=NULL;
+struct node *r=NULL;
+p=first;
+while(p!=NULL){
+    r=q;
+    q=p;
+    p=p->next;
+    q->next=r;
     
+}
+first=q;
+
 }
 
 int main(){
-    first=NULL;
-    int A[]={3,4,56,6,7,8};
-    create(A,6);
-    insert(first,3,89);
+    
+    int A[]={3,4,5,23,56,87,89};
+    create(A,7);
+    //sortInsert(first,15);
+    //Delete(first,4);
+    reverseLink(first);
     display();
+    
+    
+    //insert(first,3,89);
+    
     
     //count(first);
    //int s=count(first);
