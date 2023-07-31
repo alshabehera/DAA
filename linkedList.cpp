@@ -279,11 +279,11 @@ int main()
     t1=first->next->next->next;
     t2=first->next->next->next->next->next->next;
     t2->next=t1;
-    
+    display(first);
     cout<<endl;
     //cout<<isLoop(first);
-cout<<circularDelete(first,4);
-display(first);
+    cout<<circularDelete(first,4);
+
     //create2(B,7);
     //sortInsert(first,15);
     //Delete(first,4);
