@@ -24,11 +24,12 @@ int binarySearch(int n){
 
 }
 
+
 int floorSqrt(int n)
 {
    return binarySearch(n);
 }
 int main(){
-    int s=floorSqrt(36);
+    int s=floorSqrt(6);
     cout<<s;
 }
