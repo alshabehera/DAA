@@ -3,7 +3,8 @@
         "*.ejs": "html",
         "ostream": "cpp",
         "iostream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "new": "cpp"
     },
     "cmake.configureOnOpen": false
 }
