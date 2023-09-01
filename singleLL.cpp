@@ -96,6 +96,7 @@ if(index<0){
    if(index==1){
     p=head;
     head=head->next;
+    p->next=NULL;
     
     delete p;
    
@@ -105,7 +106,13 @@ if(index<0){
         q=p;
         p=p->next;
     }
-    q->next=p->next;
+    if(p->next==NULL){
+
+ q->next=NULL;
+    p->next=NULL;
+    }
+    else{q->next=p->next;
+    p->next=NULL;}
     
     delete p;
     
@@ -130,7 +137,7 @@ int main(){
     n.insertTail(10);
     n.insertTail(2);
     n.insertMiddle(6,99);
-    n.Delete(5);
+    n.Delete(6);
   //cout<<x;
    
     n.display();
