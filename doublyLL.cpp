@@ -22,6 +22,7 @@ class doublyLL{
     void inserthead(int d);
     void inserttail(int d);
     void insertMiddle(int index,int d);
+    void Delete(int pos);
     ~doublyLL(){
         while(head!=NULL){
             node *p=head;
@@ -92,6 +93,47 @@ void doublyLL:: insertMiddle(int index,int d){
 
 }
 
+void doublyLL::  Delete(int pos){
+    node *q=NULL;
+    node *p=head;
+    if(pos<1){
+        return ;
+    }
+    if(pos==1){
+        
+        head=head->next;
+        p->next=NULL;
+        head->prev=NULL;
+      
+        delete p;
+}
+else{
+    for(int i=1;i<pos;i++){
+        q=p;
+        p=p->next;
+ }
+ if(p->next==NULL){
+    p->prev->next=NULL;
+    p->prev=NULL;
+    delete p;
+ }
+ else{q->next=p->next;
+ p->next->prev=q;
+ p->next=NULL;
+ p->prev=NULL;
+ /*p->next=p->next->next;
+ p->next->next->prev=p;
+ p->next->next=NULL;
+ p->next->prev=NULL;*/
+
+ delete p;}
+
+
+}
+   
+
+}
+
 
 int doublyLL:: count(){
     node *p=head;
@@ -118,10 +160,13 @@ int main()
     d.inserttail(40);
     d.inserttail(20);
     d.inserttail(4);
-    d.insertMiddle(2,99);
+    //d.insertMiddle(2,99);
     d.print();
-    int x=d.count();
+    d.Delete(3);
+  
+     d.print();
+    //int x=d.count();
     cout<<endl;
-    cout<<x;
+   
     return 0;
 }
