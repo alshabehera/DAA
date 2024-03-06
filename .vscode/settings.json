@@ -4,7 +4,13 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "random": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp"
     },
     "cmake.configureOnOpen": false
 }
